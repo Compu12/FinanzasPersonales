@@ -1,0 +1,33 @@
+<app-resumen></app-resumen>
+<div class="container">
+
+    
+    <table class="table">
+        <thead>
+            <tr>
+       
+        <th scope="col">Nombre</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Monto</th>
+        <th scope="col">Acción</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor=" let transaccion of transServ.transacciones" [ngClass]="transaccion.tipo=='Egreso' ? 'stilo': 'stilo2'" >
+       
+        <td>{{transaccion.nombre}}</td>
+        <td>{{transaccion.tipo}}</td>
+        <td>{{transaccion.monto}}</td>
+        <td> <button class="btn btn-danger" (click)="delete(transaccion.id)">Eliminar</button> </td>
+    </tr>
+    
+</tbody>
+<tfoot>
+<!-- <td>Total</td> -->
+
+</tfoot>
+
+</table>
+
+
+</div>
