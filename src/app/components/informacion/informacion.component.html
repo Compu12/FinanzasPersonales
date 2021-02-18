@@ -9,6 +9,7 @@
         <th scope="col">Nombre</th>
         <th scope="col">Tipo</th>
         <th scope="col">Monto</th>
+        <th scope="col"></th>
         <th scope="col">Acción</th>
     </tr>
 </thead>
@@ -17,7 +18,8 @@
        
         <td>{{transaccion.nombre}}</td>
         <td>{{transaccion.tipo}}</td>
-        <td>{{transaccion.monto}}</td>
+        <td>$ {{transaccion.monto}}</td>
+        <td></td>
         <td> <button class="btn btn-danger" (click)="delete(transaccion.id)">Eliminar</button> </td>
     </tr>
     

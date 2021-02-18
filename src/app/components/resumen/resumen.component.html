@@ -5,18 +5,18 @@
         <div class="mb-3 row">
             <label for="txtIngresos" class="col-sm-2 col-form-label">Total Ingresos</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="txtIngresos" value="{{serTrans.ingresos}}" disabled>
+                <input type="text" class="form-control" id="txtIngresos" value="$ {{serTrans.ingresos.toFixed(2)}}" disabled>
             </div>
             <label for="txtAhorro" class="col-sm-2 col-form-label">Ahorro</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="txtAhorro" value="{{serTrans.ahorro}}" [ngClass]="serTrans.ahorro>0?'ahorroPositivo':'ahorroNegativo'" disabled >
+                <input type="text" class="form-control" id="txtAhorro" value="$ {{serTrans.ahorro.toFixed(2)}}" [ngClass]="serTrans.ahorro>0?'ahorroPositivo':'ahorroNegativo'" disabled >
             </div>
         </div>
         
         <div class="mb-3 row">
             <label for="txtEgresos" class="col-sm-2 col-form-label" >Total Egresos</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" id="txtEgresos" value="{{serTrans.egresos}}" disabled>
+                <input type="text" class="form-control" id="txtEgresos" value="$ {{serTrans.egresos.toFixed(2)}}" disabled>
             </div>
         </div>
         <div class="btn-group" role="group" aria-label="Basic example">

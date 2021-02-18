@@ -10,13 +10,15 @@ import { NuevaTransaccionComponent } from './components/nueva-transaccion/nueva-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResumenComponent,
     InformacionComponent,
-    NuevaTransaccionComponent
+    NuevaTransaccionComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
