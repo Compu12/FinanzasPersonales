@@ -1,0 +1,41 @@
+
+
+    
+    <div class="login-container text-c animated flipInX " >
+        <div>
+            <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+        </div>
+        <h3 class="text-whitesmoke">Finanzas Personales</h3>
+        <p class="text-whitesmoke">Crearse una cuenta</p>
+        <div class="container-content">
+            <form class="margin-t">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" required="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txtApellido" placeholder="Apellido" required="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txtUsuario" placeholder="Usuario" required="">
+                </div>
+                <br>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="txtContra" placeholder="Contraseña" required="">
+                </div>
+                <br>
+               <!--  <div class="form-group">
+                    <input type="passwordRpt" class="form-control" placeholder="Repetir Contraseña" required="">
+                </div>
+                <br> -->
+                <button type="submit" class="form-button button-l margin-b" (click)="create()" >Registrarse</button>
+                
+           
+            <p class="text-whitesmoke text-center"><small>Ya tienes una cuenta?</small></p>
+            <a class="text-darkyellow" routerLink="" ><small>Iniciar  Sesión</small></a>
+        </form>
+        <p class="margin-t text-whitesmoke"><small> Fianzas Personales &copy; 2021</small> </p>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+<div class="login-container text-c animated flipInX ">
+    <div>
+        <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+    </div>
+    <h3 class="text-whitesmoke">Finanzas Personales</h3>
+    <p class="text-whitesmoke">Iniciar Sesión </p>
+    <div class="container-content">
+        <form class="margin-t">
+            <div class="form-group">
+                <input type="text" class="form-control" id="txtUsuario" placeholder="Usuario" required="">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="password" class="form-control" id="txtContra" placeholder="Contraseña" required="">
+            </div>
+            <br>
+            <button type="button" class="form-button button-l margin-b" (click)="IngresaClk()">Iniciar Sesión</button>
+
+            <a class="text-darkyellow" href="#"><small>Olvidaste la contraseña?</small></a>
+            <p class="text-whitesmoke text-center"><small>No tienes una cuenta?</small></p>
+            <a class="text-darkyellow" routerLink="register"><small>Registrarse</small></a>
+        </form>
+        <p class="margin-t text-whitesmoke"><small> Finanzas Personales &copy; 2021</small> </p>
+    </div>
+</div>
