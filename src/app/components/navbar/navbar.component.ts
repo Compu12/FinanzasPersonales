@@ -12,7 +12,7 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
 export class NavbarComponent implements OnInit {
   usrNav:Usuario={id:'',nombre:'',apellido:'',usuario:'',contraseña:''};
   constructor(private router: Router,private st:StorageLocalService, private transSrv:TransaccionService) {
-    this.verificar();
+   
    }
 
   ngOnInit(): void {

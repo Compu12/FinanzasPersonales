@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { StorageLocalService } from 'src/app/services/storage.service';
@@ -9,7 +9,7 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
   templateUrl: './informacion.component.html',
   styleUrls: ['./informacion.component.css']
 })
-export class InformacionComponent implements OnInit {
+export class InformacionComponent implements OnInit,OnDestroy {
   
 
   suma: number;
@@ -32,8 +32,11 @@ export class InformacionComponent implements OnInit {
   }
   delete(id: string) {
    
-    
     this.transServ.deleteTransaccion(id);
+  }
+
+  ngOnDestroy(){
+    this.st.eliminarSt('usr');
   }
 
   

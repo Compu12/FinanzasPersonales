@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
      
      
       if(res==undefined){
-        alert('Usuario o Contraseña Incorrectas Intente Nuevamente');
+        alert('Usuario o Contraseña incorrectas intente nuevamente');
       }else{
         
         this.st.guardarValor('usr',res);

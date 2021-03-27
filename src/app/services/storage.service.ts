@@ -14,4 +14,9 @@ export class StorageLocalService {
   guardarValor(key:string, val:any){
     this.storage.set(key,val);
   }
+  eliminarSt(key:string){
+
+    this.storage.remove(key)
+  }
+  
 }

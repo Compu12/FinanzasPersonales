@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RegisterComponent } from './pages/register/register.component';
     AppRoutingModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
