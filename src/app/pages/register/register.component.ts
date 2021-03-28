@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { StorageLocalService } from 'src/app/services/storage.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
@@ -17,7 +18,11 @@ export class RegisterComponent implements OnInit {
     usuario: '',
     contraseña: ''
   }
-  constructor(private usuarioSrv: TransaccionService, private router: Router, private st: StorageLocalService) { }
+  constructor(
+    private usuarioSrv: TransaccionService,
+    private router: Router,
+    private st: StorageLocalService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.verificar();
@@ -42,7 +47,8 @@ export class RegisterComponent implements OnInit {
     this.newUser = user;
 
     this.usuarioSrv.createUsuario(this.newUser);
-    this.router.navigate(['']);
+    this.router.navigate(['login']);
+    this.showSuccess();
   }
   verificar() {
     var user = this.st.traerValor('usr');
@@ -52,6 +58,9 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/home']);
     }
 
+  }
+  showSuccess() {
+    this.toastr.success('Su usuario se ha registrado con éxito!','Registro!')
   }
 
 }

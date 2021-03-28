@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { StorageLocalService } from 'src/app/services/storage.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
@@ -11,7 +12,11 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private st: StorageLocalService, private servTrans: TransaccionService) { }
+  constructor(
+    private router: Router,
+    private st: StorageLocalService,
+    private servTrans: TransaccionService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.verificar();
@@ -36,7 +41,8 @@ export class LoginComponent implements OnInit {
 
 
     if (res == undefined) {
-      alert('Usuario o Contraseña incorrectas intente nuevamente');
+      this.showError();
+
     } else {
 
       this.st.guardarValor('usr', res);
@@ -44,5 +50,9 @@ export class LoginComponent implements OnInit {
       this.servTrans.cargarTransacciones2();
     }
 
+  }
+
+  showError() {
+    this.toastr.error('Usuario o Contraseña incorrectas intente nuevamente!', 'Login');
   }
 }

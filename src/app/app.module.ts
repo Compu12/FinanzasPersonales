@@ -17,7 +17,9 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { PrincipalComponent } from './components/principal/principal.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
+    ToastContainerModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFirestoreModule,

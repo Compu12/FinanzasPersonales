@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Transacc } from 'src/app/interfaces/transaccion.interface';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { StorageLocalService } from 'src/app/services/storage.service';
 import { TransaccionService } from 'src/app/services/transaccion.service';
@@ -14,7 +16,12 @@ export class InformacionComponent implements OnInit {
 
   suma: number;
   usr: Usuario = { id: '', nombre: '', apellido: '', usuario: '', contraseña: '' };
-  constructor(public transServ: TransaccionService, private router: Router, private st: StorageLocalService) {
+  idSeleccionado: string;
+  constructor(
+    public transServ: TransaccionService,
+    private router: Router,
+    private st: StorageLocalService,
+    private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -30,16 +37,22 @@ export class InformacionComponent implements OnInit {
     }
 
   }
-  delete(id: string) {
-
-    this.transServ.deleteTransaccion(id);
+  SeleccionarItem(id: string) {
+    this.idSeleccionado = id;
   }
-  /* 
-    ngOnDestroy(){
-      this.st.eliminarSt('usr');
-    } */
+  delete() {
+    
 
+    this.transServ.deleteTransaccion(this.idSeleccionado);
+    this.showSuccess();
+
+  }
+  showSuccess() {
+    this.toastr.success('La transacción ha sido eliminada con éxito!', 'Eliminado');
+  }
 
 
 
 }
+
+

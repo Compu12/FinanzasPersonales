@@ -92,6 +92,8 @@ export class TransaccionService {
   }
 
   deleteTransaccion(trasID: string) {
+
+
     this.firestore.doc('Transaccion/' + trasID).delete();
     this.calcularTotal();
   }
@@ -111,9 +113,9 @@ export class TransaccionService {
 
     });
 
-    
+
     return this.user;
-    
+
 
   }
 
