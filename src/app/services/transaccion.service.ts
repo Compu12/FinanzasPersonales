@@ -4,6 +4,7 @@ import { Transacc } from '../interfaces/transaccion.interface';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { Usuario } from '../interfaces/usuario.interface';
+import { StorageLocalService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,18 +17,21 @@ export class TransaccionService {
   ahorro: number = 0;
 
   usuarios: Usuario[] = [];
-  user:Usuario=undefined;
-  num:string;
+  user: Usuario = undefined;
+  num: string;
   constructor(
-    private http: HttpClient,
-    private firestore: AngularFirestore) {
+
+    private firestore: AngularFirestore, private st: StorageLocalService) {
     // this.cargarTransacciones();
-   
-    
-     this.cargarUsuarios();
-    
+    this.cargarUsuarios();
+    this.cargarTransacciones2();
+
+
   }
 
+  ngOnInit(): void {
+
+  }
   /* async cargarTransacciones() {
 
 
@@ -43,20 +47,22 @@ export class TransaccionService {
   } */
 
   cargarTransacciones2() {
-    if (this.user!=undefined) {
-      
-    
-    this.getTransaccion().subscribe(data => {
-      this.transacciones = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as Transacc
-        } as Transacc;
+    this.user = this.st.traerValor('usr');
 
-      })
-      this.calcularTotal();
-    });
-  }
+    if (this.user != undefined) {
+
+
+      this.getTransaccion().subscribe(data => {
+        this.transacciones = data.map(e => {
+          return {
+            id: e.payload.doc.id,
+            ...e.payload.doc.data() as Transacc
+          } as Transacc;
+
+        })
+        this.calcularTotal();
+      });
+    }
   }
 
   public calcularTotal() {
@@ -78,7 +84,7 @@ export class TransaccionService {
   }
 
   getTransaccion() {
-    return this.firestore.collection('Transaccion',ref=>ref.where('userId','==',this.user.id)).snapshotChanges();
+    return this.firestore.collection('Transaccion', ref => ref.where('userId', '==', this.user.id)).snapshotChanges();
   }
   createTransaccion(transacccion: Transacc) {
     return this.firestore.collection('Transaccion').add(transacccion)
@@ -96,17 +102,16 @@ export class TransaccionService {
   }
 
   login(usuario: string, contraseña: string) {
-    
+
     this.usuarios.forEach(element => {
       if (element.usuario === usuario && element.contraseña === contraseña) {
-        this.user=element;
-        
+        this.user = element;
+
       }
 
     });
+
     
-    this.cargarTransacciones2();
-   
     return this.user;
     
 
@@ -124,9 +129,6 @@ export class TransaccionService {
       })
 
     });
-   
-     
-    
   }
 
   getUsers() {

@@ -11,36 +11,38 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor( private router:Router, private st:StorageLocalService, private servTrans:TransaccionService) { }
+  constructor(private router: Router, private st: StorageLocalService, private servTrans: TransaccionService) { }
 
   ngOnInit(): void {
     this.verificar();
   }
 
   verificar() {
-    var user= this.st.traerValor('usr');
-    
-    if(user!=undefined){
-      this.router.navigate(['home']);
+    var user = this.st.traerValor('usr');
+
+
+    if (user != undefined) {
+      this.router.navigate(['/home']);
     }
 
   }
 
   async IngresaClk() {
-    let usr=(<HTMLInputElement>document.getElementById('txtUsuario')).value;
-    let pas=(<HTMLInputElement>document.getElementById('txtContra')).value;
-   
-    
-    let res= this.servTrans.login(usr,pas);
-     
-     
-      if(res==undefined){
-        alert('Usuario o Contraseña incorrectas intente nuevamente');
-      }else{
-        
-        this.st.guardarValor('usr',res);
-        this.router.navigate(['home']);
-      }
-    
+    let usr = (<HTMLInputElement>document.getElementById('txtUsuario')).value;
+    let pas = (<HTMLInputElement>document.getElementById('txtContra')).value;
+
+
+    let res = this.servTrans.login(usr, pas);
+
+
+    if (res == undefined) {
+      alert('Usuario o Contraseña incorrectas intente nuevamente');
+    } else {
+
+      this.st.guardarValor('usr', res);
+      this.router.navigate(['home']);
+      this.servTrans.cargarTransacciones2();
     }
+
+  }
 }

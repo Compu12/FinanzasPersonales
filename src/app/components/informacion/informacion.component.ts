@@ -9,37 +9,37 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
   templateUrl: './informacion.component.html',
   styleUrls: ['./informacion.component.css']
 })
-export class InformacionComponent implements OnInit,OnDestroy {
-  
+export class InformacionComponent implements OnInit {
+
 
   suma: number;
-  usr:Usuario={id:'',nombre:'',apellido:'',usuario:'',contraseña:''};
-  constructor(public transServ: TransaccionService,private router: Router,private st:StorageLocalService) {
+  usr: Usuario = { id: '', nombre: '', apellido: '', usuario: '', contraseña: '' };
+  constructor(public transServ: TransaccionService, private router: Router, private st: StorageLocalService) {
   }
-  
+
   ngOnInit(): void {
     this.verificar();
   }
 
   verificar() {
-   
-    this.usr= this.st.traerValor('usr');
-    
-    if(this.usr==undefined){
-      this.router.navigate(['']);
+
+    this.usr = this.st.traerValor('usr');
+
+    if (this.usr == undefined) {
+      this.router.navigate(['login']);
     }
 
   }
   delete(id: string) {
-   
+
     this.transServ.deleteTransaccion(id);
   }
+  /* 
+    ngOnDestroy(){
+      this.st.eliminarSt('usr');
+    } */
 
-  ngOnDestroy(){
-    this.st.eliminarSt('usr');
-  }
 
-  
-  
-  
+
+
 }

@@ -1,47 +1,48 @@
 <app-navbar></app-navbar>
-<div class="container " >
+<div class="container ">
     <div class="card">
 
         <form action="">
-        <div class="mb-3 row">
-            <label for="" class="col-sm-2 col-form-label">Tipo de Transacción</label>
-            <div class="col-sm-10">
+            <div class="mb-3 row">
+                <label for="" class="col-sm-2 col-form-label">Tipo de Transacción</label>
+                <div class="col-sm-10 text-center">
 
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="Ingreso">
-                    <label class="form-check-label" for="inlineRadio1">Ingreso</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                            value="Ingreso">
+                        <label class="form-check-label" for="inlineRadio1">Ingreso</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                            value="Egreso">
+                        <label class="form-check-label" for="inlineRadio2">Egreso</label>
+                    </div>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="Egreso">
-                    <label class="form-check-label" for="inlineRadio2">Egreso</label>
+
+            </div>
+
+            <div class="mb-3 row">
+                <label for="txtNombre" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="txtNombre" required autocomplete="off">
                 </div>
             </div>
 
-        </div>
-
-        <div class="mb-3 row">
-            <label for="txtNombre" class="col-sm-2 col-form-label">Nombre</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="txtNombre" required autocomplete="off">
+            <div class="mb-3 row">
+                <label for="txtMonto" class="col-sm-2 col-form-label">Monto</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="txtMonto" required autocomplete="off">
+                </div>
             </div>
-        </div>
 
-        <div class="mb-3 row">
-            <label for="txtMonto" class="col-sm-2 col-form-label">Monto</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="txtMonto" required autocomplete="off">
+            <div class="text-center " >
+
+                <button type="button" class="btn btn-success me-2 text-center" (click)="create()">Agregar</button>
+                <a routerLink="home"><button type="button" class="btn btn-dark">Cancelar</button></a>
+
             </div>
-        </div>
 
-        <div class="btn-group" role="group" aria-label="Basic example">
-
-            <button type="button" class="btn btn-primary" (click)="create()" >Agregar</button>
-
-        </div>
-
-    </form>
+        </form>
 
     </div>
 

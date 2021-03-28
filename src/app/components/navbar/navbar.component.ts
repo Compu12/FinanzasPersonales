@@ -10,26 +10,26 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  usrNav:Usuario={id:'',nombre:'',apellido:'',usuario:'',contraseña:''};
-  constructor(private router: Router,private st:StorageLocalService, private transSrv:TransaccionService) {
-   
-   }
+  usrNav: Usuario = { id: '', nombre: '', apellido: '', usuario: '', contraseña: '' };
+  constructor(private router: Router, private st: StorageLocalService, private transSrv: TransaccionService) {
+
+  }
 
   ngOnInit(): void {
     this.verificar();
   }
   verificar() {
     //this.st.guardarValor('usr',undefined);
-    this.usrNav= this.st.traerValor('usr');
-    
-    if(this.usrNav==undefined){
+    this.usrNav = this.st.traerValor('usr');
+
+    if (this.usrNav == undefined) {
       this.router.navigate(['']);
     }
 
   }
-  salirBtn(){
-    this.st.guardarValor('usr',undefined);
-    this.transSrv.user= undefined;
+  salirBtn() {
+    this.st.guardarValor('usr', undefined);
+    this.transSrv.user = undefined;
     this.router.navigate(['']);
   }
 }
