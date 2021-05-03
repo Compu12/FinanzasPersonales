@@ -62,7 +62,7 @@ export class NuevaTransaccionComponent implements OnInit {
         nombre: nombreT,
         monto: montoT,
         tipo: tipoT,
-        userId: this.usr.id
+        userId: this.usr?.id
 
       }
 

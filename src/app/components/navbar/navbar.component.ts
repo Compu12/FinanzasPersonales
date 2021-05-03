@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/interfaces/usuario.interface';
 import { StorageLocalService } from 'src/app/services/storage.service';
@@ -11,6 +11,10 @@ import { TransaccionService } from 'src/app/services/transaccion.service';
 })
 export class NavbarComponent implements OnInit {
   usrNav: Usuario = { id: '', nombre: '', apellido: '', usuario: '', contraseña: '' };
+
+  @ViewChild('navBurger') navBurger: ElementRef;
+  @ViewChild('navMenu') navMenu: ElementRef;
+  
   constructor(private router: Router, private st: StorageLocalService, private transSrv: TransaccionService) {
 
   }
@@ -32,4 +36,8 @@ export class NavbarComponent implements OnInit {
     this.transSrv.user = undefined;
     this.router.navigate(['']);
   }
+  toggleNavbar() {
+    this.navBurger.nativeElement.classList.toggle('is-active');
+    this.navMenu.nativeElement.classList.toggle('is-active');
+}
 }

@@ -1,8 +1,8 @@
-
+<!-- 
 <div class="container ">
 
     <div class="card ">
-
+ 
         <div class="mb-3 row">
             <label for="txtIngresos" class="col-sm-2 col-form-label">Total Ingresos</label>
             <div class="col-sm-4">
@@ -29,6 +29,45 @@
 
         </div>
     </div>
+</div> -->
+<div class="container">
+
+<div class="" >
+    <div class="box is-mobile margen">
+        <div class="card-content">
+            <div class="content">
+                <div class="field">
+                    <label class="label">Total Ingresos</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input"
+                            value="{{serTrans.ingresos.toFixed(2)|currency:'USD'}}" disabled>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Ahorro</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input"
+                            value="{{serTrans.ahorro.toFixed(2)|currency:'USD'}}"
+                            [ngClass]="serTrans.ahorro>0?'has-background-success has-text-white':'has-background-danger has-text-white'"
+                            disabled>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Total Egresos</label>
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Text input"
+                            value="{{serTrans.egresos.toFixed(2)| currency:'USD'}}" disabled>
+                    </div>
+                </div>
+                <div class="field ">
+
+                    <button class="button is-link is-fullwidth" routerLink="new">Nuevo</button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
+</div>

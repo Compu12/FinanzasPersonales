@@ -1,7 +1,7 @@
-<div class="container">
+<!-- <div class="container">
 
 
-    <table class="table">
+    <table class="table table ">
         <thead>
             <tr>
 
@@ -26,7 +26,7 @@
 
         </tbody>
         <tfoot>
-            <!-- <td>Total</td> -->
+         
 
         </tfoot>
 
@@ -34,10 +34,10 @@
 
 
 </div>
-
+ -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<!-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -55,5 +55,59 @@
                 <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="delete()">Eliminar</button>
             </div>
         </div>
+    </div>
+</div> -->
+<div class="container ">
+
+    <div class="table-container margen">
+
+
+        <table class="table is-bordered is-narrow is-fullwidth ">
+            <thead class="has-background-grey-dark  ">
+                <tr>
+                    <th class="has-text-white">Nombre</th>
+                    <th class="has-text-white">Tipo</th>
+                    <th class="has-text-white">Monto</th>
+                    <th class="has-text-white">Acción</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor=" let transaccion of transServ.transacciones"
+                    [ngClass]="transaccion.tipo=='Egreso' ? 'has-background-warning': 'has-background-success '">
+                    <td>{{transaccion.nombre}}</td>
+                    <td>{{transaccion.tipo}}</td>
+                    <td>{{transaccion.monto|currency:'USD'}}</td>
+
+                    <td> <button class="button is-small is-danger is-rounded" data-toggle="modal"
+                            data-target="#exampleModalCenter"
+                            (click)="SeleccionarItem(transaccion.id)">Eliminar</button> </td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="modal is-active" *ngIf="showModal">
+        <div class="modal-background" (click)="cancel()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">
+                    Eliminar Transacción
+                </p>
+                <button class="delete" aria-label="close" (click)="cancel()"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="modal-content">
+                    ¿Está seguro que desea eliminar?
+                </div>
+
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button is-danger" (click)="delete()">Eliminar</button>
+                <button class="button is-dark" (click)="cancel()">Cancelar</button>
+            </footer>
+        </div>
+
     </div>
 </div>

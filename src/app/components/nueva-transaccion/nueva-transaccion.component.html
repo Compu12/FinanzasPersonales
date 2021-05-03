@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="container ">
+<!-- <div class="container ">
     <div class="card">
 
         <form action="">
@@ -45,5 +45,56 @@
         </form>
 
     </div>
+
+</div> -->
+
+<div class="container">
+
+
+
+    <div class="card margen">
+        <div class="card-head">
+            Nueva Transacción
+        </div>
+        <div class="card-content">
+
+
+            <div class="field">
+                <div class="control">
+                    <label class="label">Tipo de Transacción</label>
+                    <label class="radio">
+                        <input type="radio" name="question" value="Ingreso" id="inlineRadio1">
+                        Ingreso
+                    </label>
+                    <label class="radio">
+                        <input type="radio" name="question" value='Egreso'id="inlineRadio2">
+                        Egreso
+                    </label>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Nombre</label>
+                <div class="control">
+                    <input class="input" type="text"id="txtNombre">
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Monto</label>
+                <div class="control">
+                    <input class="input" type="number" id="txtMonto" >
+                </div>
+            </div>
+            <div class="field is-grouped is-center">
+                <div class="control">
+                  <button class="button is-link"(click)="create()">Agregar</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" routerLink="home">Cancelar</button>
+                </div>
+              </div>
+
+        </div>
+    </div>
+
 
 </div>

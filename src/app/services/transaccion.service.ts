@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Transacc } from '../interfaces/transaccion.interface';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -84,7 +83,7 @@ export class TransaccionService {
   }
 
   getTransaccion() {
-    return this.firestore.collection('Transaccion', ref => ref.where('userId', '==', this.user.id)).snapshotChanges();
+    return this.firestore.collection('Transaccion', ref => ref.where('userId', '==', this.user?.id)).snapshotChanges();
   }
   createTransaccion(transacccion: Transacc) {
     return this.firestore.collection('Transaccion').add(transacccion)

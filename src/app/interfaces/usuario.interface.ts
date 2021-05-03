@@ -1,4 +1,4 @@
-import { interval } from "rxjs";
+
 
 export interface Usuario {
     id?:string,
